@@ -1,8 +1,46 @@
-# React + Vite
+# Tic Tac Toe
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto de Tic Tac Toe construido con React y Vite.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto es un simple juego de Tic Tac Toe que permite a dos jugadores jugar el juego clásico de tres en raya.
+
+## Cómo jugar
+
+1. Clona el repositorio y navega a la carpeta del proyecto.
+2. Instala las dependencias usando `npm install`.
+3. Inicia el servidor de desarrollo con `npm run dev`.
+4. Abre el navegador y ve a `http://localhost:3000` para jugar el juego.
+
+## Enlace al Proyecto Desplegado
+
+Haz clic en el siguiente botón para jugar el juego en vivo:
+
+[![Jugar Tic Tac Toe](https://img.shields.io/badge/Jugar-Tic%20Tac%20Toe-brightgreen)](https://titicuevas.github.io/Curso_React/project/02-tic-tac-toe/)
+
+## Scripts Disponibles
+
+En el directorio del proyecto, puedes ejecutar:
+
+### `npm run dev`
+
+Inicia el servidor de desarrollo.
+
+### `npm run build`
+
+Construye la aplicación para producción en la carpeta `dist`.
+
+### `npm run preview`
+
+Previsualiza la aplicación construida en un servidor local.
+
+### `npm run deploy`
+
+Despliega la aplicación en GitHub Pages.
+
+## Tecnologías Utilizadas
+
+- React
+- Vite
+- GitHub Pages para el despliegue
