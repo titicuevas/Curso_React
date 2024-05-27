@@ -4,7 +4,7 @@
 import './App.css'
 import { useState } from 'react'
 import { Square } from './components/Square'
-import { TURNS,WINNER_COMBO } from './components/constants'
+import { TURNS, WINNER_COMBO } from './components/constants'
 import confetti from 'canvas-confetti'
 
 
@@ -33,6 +33,13 @@ function App() {
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
+
+    //Guardar movimiento.
+
+   /*  window.localStorage.setItem('board', JSON.stringify(newBoard))
+    window.localStorage.setItem('turnn', turn) */
+
+
 
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
