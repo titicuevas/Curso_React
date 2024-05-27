@@ -3,88 +3,78 @@
 /* eslint-disable react/prop-types */
 import './App.css'
 import { useState } from 'react'
+import { Square } from './components/Square'
+import { TURNS,WINNER_COMBO } from './components/constants'
+import confetti from 'canvas-confetti'
 
-const TURNS = {
-  X: 'x',
-  O: 'o'
-}
 
-const Square = ({ children, isSelected, updateBoard, index }) => {
-  const className = `square ${isSelected ? 'is-selected' : ''}`
-
-  const handleClick = () => {
-    updateBoard(index)
-  }
-
-  return (
-    <div className={className} onClick={handleClick}>
-      {children}
-    </div>
-  )
-}
-
-const WINNER_COMBO = [
-  
-[0, 1, 2], [3, 4, 5], [6, 7, 8], // Filas
-[0, 3, 6], [1, 4, 7], [2, 5, 8], // Columnas
-[0, 4, 8], [2, 4, 6]             // Diagonales
-]
 
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null))
   const [turn, setTurn] = useState(TURNS.X)
+  const [winner, setWinner] = useState(null)
 
-  const [winner , setWinner] = useState(null) // Null no ha ganado nadie y False ha ganado alguien
-
-  const checkWinner = (newBoard) =>{
-
-    // se revisa todas las combinaciones si X o O han ganado
+  const checkWinner = (newBoard) => {
     for (let i = 0; i < WINNER_COMBO.length; i++) {
       const [a, b, c] = WINNER_COMBO[i]
       if (newBoard[a] && newBoard[a] === newBoard[b] && newBoard[a] === newBoard[c]) {
         return newBoard[a]
       }
     }
-    //No ha ganador
     return null
   }
 
-
   const updateBoard = (index) => {
-    if (board[index] || winner) return // No permitir sobrescribir un cuadrado ya marcado
+    if (board[index] || winner !== null) return
 
-    const newBoard = board.slice()
+    const newBoard = [...board]
     newBoard[index] = turn
     setBoard(newBoard)
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
 
-    //Revisar ganador
-
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
+      confetti()
       setWinner(newWinner)
-      alert(`El ganador es  ${newWinner}`)
+    } else if (newBoard.every(square => square !== null)) {
+      setWinner(false)
+
+
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false) // Esto consigue el empate
     }
   }
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
+  }
+
+  const checkEndGame = (newBoard) => {
+    return newBoard.every((square) => square === null)
+  }
+
+
 
   return (
     <main className='board'>
       <h1>Tic Tac Toe</h1>
 
+      <button onClick={resetGame}>Reset del juego</button>
+
       <section className="game">
-        {board.map((_, index) => {
-          return (
-            <Square
-              key={index}
-              index={index}
-              updateBoard={updateBoard}
-            >
-              {board[index]}
-            </Square>
-          )
-        })}
+        {board.map((value, index) => (
+          <Square
+            key={index}
+            isSelected={false}
+            updateBoard={() => updateBoard(index)}
+          >
+            {value}
+          </Square>
+        ))}
       </section>
 
       <section className='turn'>
@@ -96,6 +86,20 @@ function App() {
           {TURNS.O}
         </Square>
       </section>
+
+      {winner !== null && (
+        <section className="winner">
+          <div className="text">
+            <h2>{winner === false ? 'Empate' : 'Gano:'}</h2>
+            <header className="win">
+              {winner && <Square>{winner}</Square>}
+            </header>
+            <footer>
+              <button onClick={resetGame}>Empezar de nuevo</button>
+            </footer>
+          </div>
+        </section>
+      )}
     </main>
   )
 }
