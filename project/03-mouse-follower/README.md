@@ -25,6 +25,6 @@ Construye la aplicación para producción en la carpeta `dist`.
 
 ## Enlace al Proyecto Desplegado
 
-Haz clic en el siguiente botón para jugar el juego en vivo:
+Haz clic en el siguiente botón para probar el efecto:
 
 [![Probar Mouse follower](https://img.shields.io/badge/MouseFollower-brightgreen)](https://66560dbce8a0d25ec627c90a--mellow-flan-29d345.netlify.app/)
