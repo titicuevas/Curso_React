@@ -1,8 +1,30 @@
-# React + Vite
+# React Mouse Follow Effect
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto de React creado con Vite que muestra un efecto de seguimiento del ratón cuando se pulsa.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto muestra un efecto visual que sigue el cursor del ratón cuando se hace clic en cualquier parte de la pantalla. Es un ejemplo sencillo de cómo manejar eventos de ratón y actualizar el estado en una aplicación de React.
+
+## Cómo instalar y ejecutar el proyecto
+
+Sigue estos pasos para clonar el repositorio, instalar las dependencias y ejecutar el proyecto localmente:
+
+1. Clona el repositorio:
+   ```sh
+   git clone https://github.com/titicuevas/Curso_React.git
+   cd Curso_React/project/03-mouse-follower
+
+### `npm run dev`
+
+Inicia el servidor de desarrollo.
+
+### `npm run build`
+
+Construye la aplicación para producción en la carpeta `dist`.
+
+## Enlace al Proyecto Desplegado
+
+Haz clic en el siguiente botón para jugar el juego en vivo:
+
+[![Probar Mouse follower](https://img.shields.io/badge/MouseFollower-brightgreen)](https://66560dbce8a0d25ec627c90a--mellow-flan-29d345.netlify.app/)
