@@ -27,4 +27,4 @@ Construye la aplicación para producción en la carpeta `dist`.
 
 Haz clic en el siguiente botón para probar el efecto:
 
-[![Probar Mouse follower](https://img.shields.io/badge/MouseFollower-brightgreen)](https://66560dbce8a0d25ec627c90a--mellow-flan-29d345.netlify.app/)
+[![Probar Mouse follower](https://img.shields.io/badge/MouseFollower-brightgreen)](https://665615116384e1682092772e--velvety-stardust-5ddb6f.netlify.app/)

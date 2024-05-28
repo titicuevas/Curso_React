@@ -17,7 +17,7 @@ Este proyecto es un simple juego de Tic Tac Toe que permite a dos jugadores juga
 
 Haz clic en el siguiente botón para jugar el juego en vivo:
 
-[![Jugar Tic Tac Toe](https://img.shields.io/badge/Jugar-Tic%20Tac%20Toe-brightgreen)](https://6656126e5392b167a9dc1a79--frolicking-wisp-3b8c0a.netlify.app/)
+[![Jugar Tic Tac Toe](https://img.shields.io/badge/Jugar-Tic%20Tac%20Toe-brightgreen)](https://6656145a6384e16642927762--superlative-sherbet-07343b.netlify.app/)
 
 ## Scripts Disponibles
 
