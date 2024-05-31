@@ -11,7 +11,7 @@ Este proyecto es un simple juego de Tic Tac Toe que permite a dos jugadores juga
 1. Clona el repositorio y navega a la carpeta del proyecto.
 2. Instala las dependencias usando `npm install`.
 3. Inicia el servidor de desarrollo con `npm run dev`.
-4. Abre el navegador y ve a `http://localhost:3000` para jugar el juego.
+4. Abre el navegador y ve a `http://localhost:5173` para jugar el juego.
 
 ## Enlace al Proyecto Desplegado
 
