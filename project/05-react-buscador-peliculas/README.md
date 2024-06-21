@@ -24,3 +24,7 @@ Primera iteración:
 ✅ Haz que la búsqueda se haga automáticamente al escribir.
 
 ✅ Evita que se haga la búsqueda continuamente al escribir (debounce)
+
+
+
+[![Probar Buscador de Peliculas](https://img.shields.io/badge/Buscador_Peliculas-brightgreen)](https://comfy-lolly-03f554.netlify.app/)
