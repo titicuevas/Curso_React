@@ -4,6 +4,8 @@ import { Products } from './components/Products.jsx'
 import { Header } from './components/Header.jsx'
 import { Footer } from './components/Footer.jsx' 
 import { FiltersContext } from './context/filters.jsx' 
+import { Cart } from './components/Cart.jsx'
+import { CartProvider } from './context/cart.jsx'
 
 function useFilters(initialProducts) {
   
@@ -34,9 +36,13 @@ function App() {
 
   return (
     <div className="App">
+      <CartProvider>
       <Header changeFilters={setFilters} />
+      <Cart/>
       <Products products={filteredProducts} />
       <Footer filter={filters}/>
+      </CartProvider>
+
     </div>
   )
 }
