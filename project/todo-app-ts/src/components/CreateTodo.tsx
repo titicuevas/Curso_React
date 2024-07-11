@@ -1,27 +1,30 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { type TodoTitle } from '../types';
 
 interface Props {
-  saveTodo: (title: string) => void
+  saveTodo: ({ title }: TodoTitle) => void;
 }
 
 export const CreateTodo: React.FC<Props> = ({ saveTodo }) => {
-  const [inputValue, setInputValue] = useState('')
+  const [inputValue, setInputValue] = useState('');
 
-  const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
-    if (e.key === 'Enter' && inputValue !== '') {
-      saveTodo(inputValue)
-      setInputValue('')
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+    if (inputValue.trim() !== '') {
+      saveTodo({ title: inputValue });
+      setInputValue('');
     }
-  }
+  };
 
   return (
-    <input
-      className='new-todo'
-      value={inputValue}
-      onChange={(e) => { setInputValue(e.target.value) }}
-      onKeyDown={handleKeyDown}
-      placeholder='¿Qué quieres hacer?'
-      autoFocus
-    />
-  )
-}
+    <form onSubmit={handleSubmit}>
+      <input 
+        className="new-todo" 
+        value={inputValue}
+        onChange={(event) => setInputValue(event.target.value)}
+        placeholder="¿Qué quieres hacer?"
+        autoFocus 
+      />
+    </form>
+  );
+};

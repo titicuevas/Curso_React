@@ -1,73 +1,65 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState, useEffect, useRef } from 'react';
+import { type Todo as TodoType, type TodoId } from '../types';
 
-interface Props {
-  id: string
-  title: string
-  completed: boolean
-  setCompleted: (id: string, completed: boolean) => void
-  setTitle: (params: { id: string, title: string }) => void
-  isEditing: string
-  setIsEditing: (completed: string) => void
-  removeTodo: (id: string) => void
+interface Props extends TodoType {
+  onRemoveTodo: (id: TodoId) => void;
+  onToggleCompletedTodo: (id: TodoId, completed: boolean) => void;
+  onUpdateTitle: (params: { id: string, title: string }) => void;
+  isEditing: boolean;
+  setIsEditing: (id: string | null) => void;
 }
 
-export const Todo: React.FC<Props> = ({
-  id,
-  title,
-  completed,
-  setCompleted,
-  setTitle,
-  removeTodo,
-  isEditing,
-  setIsEditing
-}) => {
-  const [editedTitle, setEditedTitle] = useState(title)
-  const inputEditTitle = useRef<HTMLInputElement>(null)
+export const Todo: React.FC<Props> = ({ id, title, completed, onRemoveTodo, onToggleCompletedTodo, onUpdateTitle, isEditing, setIsEditing }) => {
+  const [editedTitle, setEditedTitle] = useState(title);
+  const inputEditTitle = useRef<HTMLInputElement>(null);
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLInputElement> = (e) => {
     if (e.key === 'Enter') {
-      setEditedTitle(editedTitle.trim())
-
+      setEditedTitle(editedTitle.trim());
       if (editedTitle !== title) {
-        setTitle({ id, title: editedTitle })
+        onUpdateTitle({ id, title: editedTitle });
       }
-
-      if (editedTitle === '') removeTodo(id)
-
-      setIsEditing('')
+      if (editedTitle === '') {
+        onRemoveTodo({ id });
+      }
+      setIsEditing('');
     }
-
     if (e.key === 'Escape') {
-      setEditedTitle(title)
-      setIsEditing('')
+      setEditedTitle(title);
+      setIsEditing('');
     }
-  }
+  };
 
   useEffect(() => {
-    inputEditTitle.current?.focus()
-  }, [isEditing])
+    if (isEditing) {
+      inputEditTitle.current?.focus();
+    }
+  }, [isEditing]);
 
   return (
-    <>
-      <div className='view'>
-        <input
-          className='toggle'
-          checked={completed}
-          type='checkbox'
-          onChange={(e) => { setCompleted(id, e.target.checked) }}
-        />
-        <label>{title}</label>
-        <button className='destroy' onClick={() => { removeTodo(id) }}></button>
-      </div>
-
-      <input
-        className='edit'
-        value={editedTitle}
-        onChange={(e) => { setEditedTitle(e.target.value) }}
-        onKeyDown={handleKeyDown}
-        onBlur={() => { setIsEditing('') }}
-        ref={inputEditTitle}
+    <div className="view">
+      <input 
+        className="toggle"
+        checked={completed}
+        type="checkbox"
+        onChange={(event) => onToggleCompletedTodo({ id }, event.target.checked)} 
       />
-    </>
-  )
-}
+      {isEditing ? (
+        <input
+          ref={inputEditTitle}
+          className="edit"
+          value={editedTitle}
+          onChange={(e) => { setEditedTitle(e.target.value) }}
+          onKeyDown={handleKeyDown}
+          onBlur={() => setIsEditing('')}
+        />
+      ) : (
+        <label onDoubleClick={() => setIsEditing(id)}>{title}</label>
+      )}
+      <button
+        className="destroy"
+        onClick={() => onRemoveTodo({ id })}
+      />
+    </div>
+  );
+};
