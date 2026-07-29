@@ -3,7 +3,8 @@
 Crea una aplicación para buscar películas
 
 API a usar: - <https://api.themoviedb.org/>
-Consigue la API Key 7c10606307e4a10be78f9959d3065ef3
+
+Copia `.env.example` a `.env` y añade tus claves (`VITE_TMDB_API_KEY` y `VITE_DEEPL_API_KEY`).
 
 Requerimientos:
 

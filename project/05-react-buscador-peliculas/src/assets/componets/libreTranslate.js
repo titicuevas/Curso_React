@@ -1,7 +1,7 @@
 // libreTranslate.js
 export const translateText = async (text, targetLanguage) => {
-    const apiKey = "cd01ca9a-91d7-446b-be73-7cb9758f9f36";
-    const url = `https://api-free.deepl.com/v2/translate?auth_key=${apiKey}:fx&text=${encodeURIComponent(text)}&target_lang=${targetLanguage}`;
+    const apiKey = import.meta.env.VITE_DEEPL_API_KEY;
+    const url = `https://api-free.deepl.com/v2/translate?auth_key=${apiKey}&text=${encodeURIComponent(text)}&target_lang=${targetLanguage}`;
   
     try {
       const response = await fetch(url, {
@@ -24,4 +24,3 @@ export const translateText = async (text, targetLanguage) => {
       return text; // Devuelve el texto original en caso de error
     }
   };
-  

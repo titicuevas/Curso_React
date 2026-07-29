@@ -10,7 +10,7 @@ function App() {
   const [error, setError] = useState(null);
   const [mensaje, setMensaje] = useState("");
 
-  const apiKeyTMDB = "7c10606307e4a10be78f9959d3065ef3";
+  const apiKeyTMDB = import.meta.env.VITE_TMDB_API_KEY;
 
   const traducirDescripcion = async (overview) => {
     try {

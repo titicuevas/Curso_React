@@ -1,11 +1,11 @@
 export interface Todo {
-    id: string
-    title: string
-    completed: boolean
-  }
-  
-  export type TodoId = Pick<Todo, 'id'>
-  export type ListOfTodos = Todo[]
-  
+  id: string
+  title: string
+  completed: boolean
+}
 
-  export type FilterValue = typeof TODO_FILTERS[keyof typeof TODO_FILTERS]
+export type TodoId = Pick<Todo, 'id'>
+export type TodoTitle = Pick<Todo, 'title'>
+export type ListOfTodos = Todo[]
+
+export type FilterValue = 'all' | 'active' | 'completed'
