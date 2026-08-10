@@ -5,8 +5,8 @@ import { useCatImage } from "./hooks/useCatImage";
 const CAT_ENDPOINT_RANDOM_FACT = "https://catfact.ninja/fact";
 
 export function App() {
-  const [fact, setFact] = useState();
-  const [factError, setFactError] = useState();
+  const [fact, setFact] = useState(null);
+  const [factError, setFactError] = useState(null);
 
   const imageUrl = useCatImage(fact);
 
